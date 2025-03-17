@@ -9,7 +9,7 @@ import numpy as np
 import json
 
 # This script evaluates a model on a dataset
-
+# Making changes to this script 
 parser = argparse.ArgumentParser()
 parser.add_argument('--model_path', type=str, default='')
 parser.add_argument('--task', type=str)
