@@ -3,7 +3,7 @@ bitsandbytes
 datasets
 deepspeed==0.15.0
 einops
-flash-attn==2.7.0.post2
+flash-attn==2.7.0.post2 #problematic CUDA_HOME not set error v100
 Flask==3.1.0
 isort
 jsonlines
@@ -20,3 +20,6 @@ transformers==4.46.3
 transformers_stream_generator
 wandb
 wheel
+vllm
+word2number
+#ValueError: Bfloat16 is only supported on GPUs with compute capability of at least 8.0. Your Tesla V100-SXM2-32GB GPU has compute capability 7.0. You can use float16 instead by explicitly setting the`dtype` flag in CLI, for example: --dtype=half.
