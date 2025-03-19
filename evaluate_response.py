@@ -222,8 +222,6 @@ results['dataset'] = dataset_name
 results['tokenizer'] = tokenizer_path
 results['prompt_name'] = PROMPT_NAME
 
-results['prompt']= prompt_list[prompt_list.index(PROMPT_NAME)]['prompt_template']
-
 with open(f'results/verify/{result_name}.json', 'w') as f:
     json.dump(results, f, indent=4)
     
