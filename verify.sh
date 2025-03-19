@@ -13,6 +13,7 @@ python evaluate_response.py \
   --model_path=Qwen/Qwen2.5-Math-1.5B-Instruct \
   --task verify \
   --tokenizer=Qwen/Qwen2.5-Math-1.5B-Instruct 
+export path=outputs/openai_gsm8k_results_deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_32768.json
 
 python evaluate_response.py \
   --response_path=$path \
