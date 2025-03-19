@@ -222,7 +222,7 @@ results['dataset'] = dataset_name
 results['tokenizer'] = tokenizer_path
 results['prompt_name'] = PROMPT_NAME
 
-with open(f'results/verify/{result_name}.json', 'w') as f:
+with open(f'results/verify/{result_name}_{model_path}.json', 'w') as f:
     json.dump(results, f, indent=4)
     
 print(f"Results saved to results/verify/{result_name}.json")
