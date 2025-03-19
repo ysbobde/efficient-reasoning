@@ -1,3 +1,4 @@
+export path=outputs/openai_gsm8k_results_deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_32768.json
 ssh <your_username>@bridges2.psc.edu
 interact -p GPU-shared --gres=gpu:h100-80:1 -t 1:00:00
 cd /ocean/projects/cis250041p/ybobde
