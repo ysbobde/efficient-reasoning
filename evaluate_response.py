@@ -222,8 +222,10 @@ results['dataset'] = dataset_name
 results['tokenizer'] = tokenizer_path
 results['prompt_name'] = PROMPT_NAME
 
-model_filename = os.path.basename(model_path)
-with open(f'results/verify/{result_name}_{model_filename}.json', 'w') as f:
+model_filename = os.path.basename(model_path).replace("/", "_")
+safe_result_name = result_name.replace("/", "_")
+result_file = os.path.join("results", "verify", f"{safe_result_name}_{model_filename}.json")
+with open(result_file, 'w') as f:
     json.dump(results, f, indent=4)
     
 print(f"Results saved to results/verify/{result_name}.json")
