@@ -4,9 +4,33 @@ from vllm import LLM, SamplingParams
 from datasets import load_from_disk, load_dataset
 from utils import DATASET_KEYS, RESPONSE_EXTRACTOR, RESPONSE_COMPARATOR
 import pandas as pd
+import re
 import argparse
 import numpy as np
 import json
+def extract_boxed(text):
+    # regex expression to find \boxed{...} content
+    boxed_pattern = r"\\boxed\{(.*?)\}"
+    matches = re.findall(boxed_pattern, text)
+    
+    if matches:
+        # get the content inside the box
+        content = matches[0].strip().lower()
+        # convert to standard True/False format
+        if content in ['true', 'yes', '1', 't']:
+            return "True"
+        elif content in ['false', 'no', '0', 'f']:
+            return "False"
+        return content
+    
+    # if no boxed content, search for True/False in the text
+    text_lower = text.lower()
+    if "true" in text_lower:
+        return "True"
+    elif "false" in text_lower:
+        return "False"
+    
+    return "Unknown"
 
 # This script evaluates a model on a dataset
 # Making changes to this script 
@@ -39,7 +63,7 @@ ANSWER_KEY = DATASET_KEYS[dataset_name]["answer"]
 RESPONSE_KEY = DATASET_KEYS[dataset_name]["responses"]
 CORRECTNESS_KEY = DATASET_KEYS[dataset_name]["correctness"]
 eq = RESPONSE_COMPARATOR[dataset_name]
-
+RESPONSE_EXTRACTOR[dataset_name] = lambda text: extract_boxed(text)
 # if dataset_name == 'datasets/converted_aime_dataset':
 #     dataset = load_from_disk(dataset_name)
 #     TEST_N = 10
