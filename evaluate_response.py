@@ -210,7 +210,7 @@ def evaluate_model(model_name,tokenizer_name=None):
 
 os.makedirs("results/verify", exist_ok=True)
 os.makedirs("outputs/verify", exist_ok=True)
-result_name =  model_path # to save files
+result_name = args.response_path.split("/")[-1][:-5] # to save files
 result_name += "_" + PROMPT_NAME
 
 
@@ -218,7 +218,6 @@ print("Found model_path:", model_path)
 print("This is not a checkpoint, will evaluate directly...")
 scores = evaluate_model(model_path)
 results[model_path] = scores
-results['model']=args.response_path.split("/")[-1][:-5]
 results['dataset'] = dataset_name
 results['tokenizer'] = tokenizer_path
 results['prompt_name'] = PROMPT_NAME
