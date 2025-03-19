@@ -6,3 +6,8 @@ python evaluate_response.py \
     --response_path=$path \
     --task verify \
     --scale=1.5B
+# for Qwen-2.5-Math as verifier
+--response "outputs/openai_gsm8k_results_deepseek-ai_DeepSeek-R1-Distill-Qwen-1.5B_32768.json" \
+  --model "Qwen/Qwen2.5-Math-1.5B-Instruct" \
+  --tokenizer "Qwen/Qwen2.5-Math-1.5B-Instruct" \
+  --prompt "verifier_qwen_math_specific"

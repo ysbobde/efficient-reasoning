@@ -12,7 +12,7 @@ import json
 # Making changes to this script 
 parser = argparse.ArgumentParser()
 parser.add_argument('--model_path', type=str, default='')
-parser.add_argument('--task', type=str)
+parser.add_argument('--task', type=str, default='verify')
 parser.add_argument('--response_path', type=str, help="json file path of the response")
 parser.add_argument('--tokenizer', type=str, default='deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B')
 parser.add_argument('--scale', type=str, default='1.5B')
