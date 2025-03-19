@@ -165,7 +165,7 @@ def get_scores(ds, outputs, save_file_name=None):
     }
 
 
-def evaluate_model(model_name,tokenizer_name=None):
+def evaluate_model(model_name,output_path,tokenizer_name=None):
     test_prompts = []
     # changed for flexibility
     model = LLM(model_name, 
@@ -201,7 +201,7 @@ def evaluate_model(model_name,tokenizer_name=None):
     test_outputs = model.generate(prompt_token_ids=test_prompts, sampling_params=sampling_params, use_tqdm=True)
     end_time = time.time()
     # evaluate verifier
-    test_scores = get_scores(data, test_outputs, f"outputs/verify/{result_name}.json")
+    test_scores = get_scores(data, test_outputs, f"outputs/verify/{output_path}")
     print("Test:", test_scores)
     # run time taken by the verifier
     time_taken = end_time - start_time
@@ -213,18 +213,19 @@ os.makedirs("results/verify", exist_ok=True)
 os.makedirs("outputs/verify", exist_ok=True)
 result_name = args.response_path.split("/")[-1][:-5] # to save files
 result_name += "_" + PROMPT_NAME
-
+model_filename = os.path.basename(model_path).replace("/", "_")
+safe_result_name = result_name.replace("/", "_")
 
 print("Found model_path:", model_path)
 print("This is not a checkpoint, will evaluate directly...")
-scores = evaluate_model(model_path)
+output_path=f"{safe_result_name}_{model_filename}.json"
+scores = evaluate_model(model_path,output_path)
 results[model_path] = scores
 results['dataset'] = dataset_name
 results['tokenizer'] = tokenizer_path
 results['prompt_name'] = PROMPT_NAME
 
-model_filename = os.path.basename(model_path).replace("/", "_")
-safe_result_name = result_name.replace("/", "_")
+
 result_file = os.path.join("results", "verify", f"{safe_result_name}_{model_filename}.json")
 with open(result_file, 'w') as f:
     json.dump(results, f, indent=4)
