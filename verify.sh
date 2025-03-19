@@ -18,4 +18,4 @@ python evaluate_response.py \
   --model_path=Qwen/Qwen2.5-Math-1.5B-Instruct \
   --task verify \
   --tokenizer =Qwen/Qwen2.5-Math-1.5B-Instruct \
-  --prompt_name =verifier_math1
+  --prompt_name =verifier1
