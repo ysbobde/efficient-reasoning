@@ -108,7 +108,8 @@ def get_scores(ds, outputs, save_file_name=None):
 
     results = pd.DataFrame(results)
     predictions, golds = results["verifier_prediction"], results["accuracy"]
-    predictions = [str(p) for p in predictions]
+    predictions = [[str(item) for item in p] for p in predictions]
+
     golds = [str(g) for g in golds]
 
     # pass@1 calculation
