@@ -10,4 +10,5 @@ python evaluate_response.py \
 python evaluate_response.py \
   --response_path=$path \
   --model_path=Qwen/Qwen2.5-Math-1.5B-Instruct \
+  --task verify \
   --tokenizer =Qwen/Qwen2.5-Math-1.5B-Instruct 

@@ -5,3 +5,7 @@ my_quotas
 conda activate efficient_reasoning
 module load AI
 conda list
+#By default, Hugging Face models are downloaded to a cache in your home directory (usually ~/.cache/huggingface), which is why I was hitting the quota limit.
+echo 'export HF_HOME=/ocean/projects/cis250041p/ybobde/huggingface_cache' >> ~/.bashrc
+export HF_HOME=/ocean/projects/cis250041p/ybobde/huggingface_cache
+mkdir -p /ocean/projects/cis250041p/ybobde/huggingface_cache
