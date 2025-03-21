@@ -33,7 +33,7 @@ eq = RESPONSE_COMPARATOR[dataset_name]
 
 if dataset_name == 'datasets/converted_aime_dataset':
     dataset = load_from_disk(dataset_name)
-    TEST_N = 10
+    TEST_N = 1
     MAX_TOKENS = tok_limit
     TEST_TEMPERATURE = 0.6
     MAX_TEST_SAMPLES = 100

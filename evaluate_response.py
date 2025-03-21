@@ -65,7 +65,7 @@ MAX_TEST_SAMPLES = args.n_sample
 PROMPT_NAME = args.prompt_name
 with open(args.response_path, 'r') as f:
     data = json.load(f)
-data = data[:4]
+# data = data[:4] commented out for testing whole 
 
 with open("prompt.json", 'r') as f:
     prompt_list = json.load(f)
